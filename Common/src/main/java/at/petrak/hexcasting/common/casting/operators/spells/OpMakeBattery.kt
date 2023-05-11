@@ -64,21 +64,32 @@ object OpMakeBattery : SpellAction {
         }
 
         return SpellAction.Result(
-            Spell(entity, hand),
+            Spell(entity, hand, handStack),
             MediaConstants.CRYSTAL_UNIT,
             listOf(ParticleSpray.burst(entity.position(), 0.5))
         )
     }
 
-    private data class Spell(val itemEntity: ItemEntity, val hand: InteractionHand) : RenderedSpell {
+    private data class Spell(val itemEntity: ItemEntity, val hand: InteractionHand, val handStack: ItemStack) : RenderedSpell {
         override fun cast(ctx: CastingEnvironment) {
             if (itemEntity.isAlive) {
+                var baseMedia: Long = 0
+                var baseMax: Long = 0
+                var holder = handStack.getItem()
+                if (holder is ItemMediaHolder) {
+                    baseMedia = holder.getMedia(handStack)
+                    baseMax = holder.getMaxMedia(handStack)
+                }
                 val entityStack = itemEntity.item.copy()
+                holder = entityStack.getItem()
+                if (holder is ItemMediaHolder) {
+                    baseMax += holder.getMaxMedia(entityStack) - holder.getMedia(entityStack)
+                }
                 val mediamount = extractMedia(entityStack, drainForBatteries = true)
                 if (mediamount > 0) {
                     ctx.caster?.setItemInHand(
                         hand,
-                        ItemMediaHolder.withMedia(ItemStack(HexItems.BATTERY), mediamount, mediamount)
+                        ItemMediaHolder.withMedia(ItemStack(HexItems.BATTERY), mediamount + baseMedia, mediamount + baseMax)
                     ) ?: return
                 }
 

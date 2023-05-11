@@ -28,6 +28,11 @@ public class ItemMediaBattery extends ItemMediaHolder {
     }
 
     @Override
+    public boolean canConstructBattery(ItemStack stack) {
+        return true;
+    }
+
+    @Override
     public void fillItemCategory(@NotNull CreativeModeTab tab, @NotNull NonNullList<ItemStack> items) {
         // who was drunk at the wheel when they named this
         if (allowedIn(tab)) {

@@ -30,7 +30,7 @@ public class HexItemTagProvider extends PaucalItemTagProvider {
             HexItems.STAFF_CRIMSON, HexItems.STAFF_WARPED, HexItems.STAFF_MANGROVE,
             HexItems.STAFF_QUENCHED, HexItems.STAFF_MINDSPLICE);
 
-        tag(HexTags.Items.PHIAL_BASE).add(Items.GLASS_BOTTLE);
+        tag(HexTags.Items.PHIAL_BASE).add(Items.GLASS_BOTTLE, HexItems.BATTERY);
         tag(HexTags.Items.GRANTS_ROOT_ADVANCEMENT).add(HexItems.AMETHYST_DUST, Items.AMETHYST_SHARD,
             HexItems.CHARGED_AMETHYST);
         tag(HexTags.Items.SEAL_MATERIALS).add(Items.HONEYCOMB);

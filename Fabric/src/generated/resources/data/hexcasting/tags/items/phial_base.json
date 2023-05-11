@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:glass_bottle"
+    "minecraft:glass_bottle",
+    "hexcasting:battery"
   ]
 }

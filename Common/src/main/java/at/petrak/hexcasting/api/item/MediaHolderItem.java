@@ -21,6 +21,10 @@ public interface MediaHolderItem {
 
     boolean canRecharge(ItemStack stack);
 
+    default boolean canConstructBattery(ItemStack stack) {
+        return false;
+    }
+
     default float getMediaFullness(ItemStack stack) {
         long max = getMaxMedia(stack);
         if (max == 0) {
