@@ -102,10 +102,14 @@ dependencies {
         exclude group: "net.fabricmc.fabric-api"
     })
 
-    // *Something* is including an old version of modmenu with a broken mixin
+    // *Something* is including a version of modmenu for 1.19
     // We can't figure out what it is
-    // so i'm just including a fresher version
-    modImplementation("com.terraformersmc:modmenu:$modmenuVersion")
+    // so i'm just forcing a compatible version
+    modImplementation("com.terraformersmc:modmenu") {
+        version {
+            strictly "$modmenuVersion"
+        }
+    }
 
     // i am speed
     // sodium is causing frustum mixin errors so don't use it

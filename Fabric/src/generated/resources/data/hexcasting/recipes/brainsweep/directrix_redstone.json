@@ -4,18 +4,18 @@
     "type": "block",
     "block": "hexcasting:empty_directrix"
   },
-  "cost": 1000000,
   "entityIn": {
     "type": "villager",
-    "minLevel": 1,
-    "profession": "mason"
+    "profession": "mason",
+    "minLevel": 1
   },
+  "cost": 1000000,
   "result": {
-    "name": "hexcasting:directrix_redstone",
     "properties": {
-      "energized": "false",
       "facing": "north",
+      "energized": "false",
       "powered": "false"
-    }
+    },
+    "name": "hexcasting:directrix_redstone"
   }
 }

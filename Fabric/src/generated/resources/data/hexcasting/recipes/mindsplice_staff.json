@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
-  "key": {
-    "A": {
-      "item": "hexcasting:charged_amethyst"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "tag": "hexcasting:brainswept_circle_components"
-    }
-  },
   "pattern": [
     " SA",
     " WS",
     "S  "
   ],
+  "key": {
+    "W": {
+      "tag": "hexcasting:brainswept_circle_components"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "A": {
+      "item": "hexcasting:charged_amethyst"
+    }
+  },
   "result": {
     "item": "hexcasting:mindsplice_staff"
   }

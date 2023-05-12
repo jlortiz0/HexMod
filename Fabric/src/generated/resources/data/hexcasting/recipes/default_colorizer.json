@@ -1,5 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DCD",
+    "CIC",
+    "DCD"
+  ],
   "key": {
     "C": {
       "item": "hexcasting:amethyst_dust"
@@ -11,11 +16,6 @@
       "item": "minecraft:copper_ingot"
     }
   },
-  "pattern": [
-    "DCD",
-    "CIC",
-    "DCD"
-  ],
   "result": {
     "item": "hexcasting:default_colorizer"
   }

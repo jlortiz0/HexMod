@@ -1,9 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IAN",
+    " S ",
+    " S "
+  ],
   "key": {
-    "A": {
-      "item": "minecraft:amethyst_shard"
-    },
     "I": [
       {
         "item": "minecraft:iron_ingot"
@@ -20,6 +22,9 @@
         "tag": "c:iron_nuggets"
       }
     ],
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
     "S": [
       {
         "item": "minecraft:stick"
@@ -29,11 +34,6 @@
       }
     ]
   },
-  "pattern": [
-    "IAN",
-    " S ",
-    " S "
-  ],
   "result": {
     "item": "hexcasting:jeweler_hammer"
   }

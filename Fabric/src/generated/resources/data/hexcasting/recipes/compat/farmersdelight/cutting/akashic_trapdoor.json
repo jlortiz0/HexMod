@@ -1,5 +1,19 @@
 {
   "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "hexcasting:edified_trapdoor"
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool",
+    "tag": "c:tools/axes"
+  },
+  "result": [
+    {
+      "item": "hexcasting:edified_planks"
+    }
+  ],
   "fabric:load_conditions": [
     {
       "condition": "fabric:all_mods_loaded",
@@ -7,19 +21,5 @@
         "farmersdelight"
       ]
     }
-  ],
-  "ingredients": [
-    {
-      "item": "hexcasting:edified_trapdoor"
-    }
-  ],
-  "result": [
-    {
-      "item": "hexcasting:edified_planks"
-    }
-  ],
-  "tool": {
-    "type": "farmersdelight:tool",
-    "tag": "c:tools/axes"
-  }
+  ]
 }

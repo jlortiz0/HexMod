@@ -27,12 +27,15 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 
+    compileOnly 'com.github.TheElectronWill:Night-Config:v3.6.6'
     compileOnly "at.petra-k.paucal:paucal-common-$minecraftVersion:$paucalVersion"
     compileOnly "vazkii.patchouli:Patchouli-xplat:$minecraftVersion-$patchouliVersion"
 

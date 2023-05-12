@@ -2,6 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
@@ -11,24 +12,23 @@
       ],
       "functions": [
         {
-          "add": false,
+          "function": "minecraft:set_count",
           "conditions": [
             {
-              "block": "hexcasting:edified_slab",
               "condition": "minecraft:block_state_property",
+              "block": "hexcasting:edified_slab",
               "properties": {
                 "type": "double"
               }
             }
           ],
           "count": 2.0,
-          "function": "minecraft:set_count"
+          "add": false
         },
         {
           "function": "minecraft:explosion_decay"
         }
-      ],
-      "rolls": 1.0
+      ]
     }
   ]
 }

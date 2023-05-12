@@ -1,9 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GPG",
+    "LAL",
+    "GPG"
+  ],
   "key": {
-    "A": {
-      "item": "hexcasting:charged_amethyst"
-    },
     "G": [
       {
         "item": "minecraft:glowstone_dust"
@@ -17,13 +19,11 @@
     },
     "P": {
       "item": "minecraft:paper"
+    },
+    "A": {
+      "item": "hexcasting:charged_amethyst"
     }
   },
-  "pattern": [
-    "GPG",
-    "LAL",
-    "GPG"
-  ],
   "result": {
     "item": "hexcasting:focus"
   }

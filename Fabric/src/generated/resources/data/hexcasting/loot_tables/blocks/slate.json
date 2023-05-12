@@ -2,6 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
@@ -9,20 +10,19 @@
           "functions": [
             {
               "function": "minecraft:copy_nbt",
+              "source": "block_entity",
               "ops": [
                 {
-                  "op": "replace",
                   "source": "pattern",
-                  "target": "BlockEntityTag.pattern"
+                  "target": "BlockEntityTag.pattern",
+                  "op": "replace"
                 }
-              ],
-              "source": "block_entity"
+              ]
             }
           ],
           "name": "hexcasting:slate"
         }
-      ],
-      "rolls": 1.0
+      ]
     }
   ]
 }

@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "key": {
-    "A": {
-      "item": "hexcasting:amethyst_dust"
-    },
-    "P": {
-      "item": "minecraft:paper"
-    }
-  },
   "pattern": [
     " A",
     "P "
   ],
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "A": {
+      "item": "hexcasting:amethyst_dust"
+    }
+  },
   "result": {
     "item": "hexcasting:scroll_small"
   }
