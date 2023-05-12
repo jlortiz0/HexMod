@@ -14,6 +14,8 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -242,8 +244,8 @@ public class CircleExecutionState {
                     if (found != null) {
                         // oh no!
                         impetus.postError(
-                            Component.translatable("hexcasting.circles.many_exits",
-                                Component.literal(this.currentPos.toShortString()).withStyle(ChatFormatting.RED)),
+                            new TranslatableComponent("hexcasting.circles.many_exits",
+                                new TextComponent(this.currentPos.toShortString()).withStyle(ChatFormatting.RED)),
                             new ItemStack(Items.COMPASS));
                         ICircleComponent.sfx(this.currentPos, executorBlockState, world,
                             Objects.requireNonNull(env.getImpetus()), false);
@@ -258,8 +260,8 @@ public class CircleExecutionState {
             if (found == null) {
                 // will never enter here if there were too many because found will have been set
                 impetus.postError(
-                    Component.translatable("hexcasting.circles.no_exits",
-                        Component.literal(this.currentPos.toShortString()).withStyle(ChatFormatting.RED)),
+                    new TranslatableComponent("hexcasting.circles.no_exits",
+                        new TextComponent(this.currentPos.toShortString()).withStyle(ChatFormatting.RED)),
                     new ItemStack(Items.OAK_SIGN));
                 ICircleComponent.sfx(this.currentPos, executorBlockState, world,
                     Objects.requireNonNull(env.getImpetus()), false);

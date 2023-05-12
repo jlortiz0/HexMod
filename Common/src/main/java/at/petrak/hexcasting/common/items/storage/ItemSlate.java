@@ -14,6 +14,7 @@ import at.petrak.hexcasting.common.misc.PatternTooltip;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -38,7 +39,7 @@ public class ItemSlate extends BlockItem implements IotaHolderItem {
     @Override
     public Component getName(ItemStack pStack) {
         var key = "block." + HexAPI.MOD_ID + ".slate." + (hasPattern(pStack) ? "written" : "blank");
-        return Component.translatable(key);
+        return new TranslatableComponent(key);
     }
 
     public static boolean hasPattern(ItemStack stack) {

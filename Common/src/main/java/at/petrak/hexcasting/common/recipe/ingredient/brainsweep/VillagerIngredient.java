@@ -7,6 +7,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.GsonHelper;
@@ -80,19 +82,19 @@ public class VillagerIngredient extends BrainsweepeeIngredient {
 
         if (advanced) {
             if (minLevel >= 5) {
-                tooltip.add(Component.translatable("hexcasting.tooltip.brainsweep.level", 5)
+                tooltip.add(new TranslatableComponent("hexcasting.tooltip.brainsweep.level", 5)
                     .withStyle(ChatFormatting.DARK_GRAY));
             } else if (minLevel > 1) {
-                tooltip.add(Component.translatable("hexcasting.tooltip.brainsweep.min_level", minLevel)
+                tooltip.add(new TranslatableComponent("hexcasting.tooltip.brainsweep.min_level", minLevel)
                     .withStyle(ChatFormatting.DARK_GRAY));
             }
 
             if (this.biome != null) {
-                tooltip.add(Component.literal(this.biome.toString()).withStyle(ChatFormatting.DARK_GRAY));
+                tooltip.add(new TextComponent(this.biome.toString()).withStyle(ChatFormatting.DARK_GRAY));
             }
 
             if (this.profession != null) {
-                tooltip.add(Component.literal(this.profession.toString()).withStyle(ChatFormatting.DARK_GRAY));
+                tooltip.add(new TextComponent(this.profession.toString()).withStyle(ChatFormatting.DARK_GRAY));
             }
         }
 
@@ -106,18 +108,18 @@ public class VillagerIngredient extends BrainsweepeeIngredient {
 
     @Override
     public Component getName() {
-        MutableComponent component = Component.literal("");
+        MutableComponent component = new TextComponent("");
 
         boolean addedAny = false;
 
         if (minLevel >= 5) {
-            component.append(Component.translatable("merchant.level.5"));
+            component.append(new TranslatableComponent("merchant.level.5"));
             addedAny = true;
         } else if (minLevel > 1) {
-            component.append(Component.translatable("merchant.level." + minLevel));
+            component.append(new TranslatableComponent("merchant.level." + minLevel));
             addedAny = true;
         } else if (profession != null) {
-            component.append(Component.translatable("merchant.level.1"));
+            component.append(new TranslatableComponent("merchant.level.1"));
             addedAny = true;
         }
 
@@ -126,7 +128,7 @@ public class VillagerIngredient extends BrainsweepeeIngredient {
                 component.append(" ");
             }
             var biomeLoc = Registry.VILLAGER_TYPE.getKey(this.biome);
-            component.append(Component.translatable("biome." + biomeLoc.getNamespace() + "." + biomeLoc.getPath()));
+            component.append(new TranslatableComponent("biome." + biomeLoc.getNamespace() + "." + biomeLoc.getPath()));
             addedAny = true;
         }
 
@@ -137,7 +139,7 @@ public class VillagerIngredient extends BrainsweepeeIngredient {
             // TODO: what's the convention used for modded villager types?
             // Villager::getTypeName implies that it there's no namespace information.
             // i hope there is some convention
-            component.append(Component.translatable("entity.minecraft.villager." + professionLoc.getPath()));
+            component.append(new TranslatableComponent("entity.minecraft.villager." + professionLoc.getPath()));
         } else {
             if (addedAny) {
                 component.append(" ");

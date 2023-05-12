@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.NotNull;
@@ -67,10 +68,10 @@ public class EntityIota extends Iota {
         @Override
         public Component display(Tag tag) {
             if (!(tag instanceof CompoundTag ctag)) {
-                return Component.translatable("hexcasting.spelldata.entity.whoknows");
+                return new TranslatableComponent("hexcasting.spelldata.entity.whoknows");
             }
             if (!ctag.contains("name", Tag.TAG_STRING)) {
-                return Component.translatable("hexcasting.spelldata.entity.whoknows");
+                return new TranslatableComponent("hexcasting.spelldata.entity.whoknows");
             }
             var nameJson = ctag.getString("name");
             return Component.Serializer.fromJsonLenient(nameJson).withStyle(ChatFormatting.AQUA);

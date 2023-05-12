@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.StringRepresentable;
@@ -76,6 +77,6 @@ public abstract class BrainsweepeeIngredient {
 
     public static Component getModNameComponent(String namespace) {
         String mod = IXplatAbstractions.INSTANCE.getModName(namespace);
-        return Component.literal(mod).withStyle(ChatFormatting.BLUE, ChatFormatting.ITALIC);
+        return new TextComponent(mod).withStyle(ChatFormatting.BLUE, ChatFormatting.ITALIC);
     }
 }

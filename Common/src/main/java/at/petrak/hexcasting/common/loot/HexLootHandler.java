@@ -2,7 +2,8 @@ package at.petrak.hexcasting.common.loot;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
+
+import java.util.Random;
 
 import static at.petrak.hexcasting.api.HexAPI.modLoc;
 
@@ -61,8 +62,8 @@ public class HexLootHandler {
         new ResourceLocation("minecraft", "chests/village/village_taiga_house")
     );
 
-    public static int getScrollCount(int range, RandomSource random) {
-        return Math.max(random.nextIntBetweenInclusive(-range, range), 0);
+    public static int getScrollCount(int range, Random random) {
+        return Math.max(random.nextInt(-range, range + 1), 0);
     }
 
     public static final double DEFAULT_SHARD_MODIFICATION = -0.5;

@@ -7,7 +7,6 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -23,6 +22,8 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import java.util.Random;
 
 public class BlockSconce extends AmethystBlock implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
@@ -84,33 +85,14 @@ public class BlockSconce extends AmethystBlock implements SimpleWaterloggedBlock
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource rand) {
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random rand) {
         if (rand.nextFloat() < 0.8f) {
             var cx = pPos.getX() + 0.5;
             var cy = pPos.getY() + 0.5;
             var cz = pPos.getZ() + 0.5;
-            //values for particle direction randomization
-            //x 
-            var dX = switch(pState.getValue(FACING)){
-                    case EAST -> rand.triangle(0.01f, 0.05f);
-                    case WEST -> rand.triangle(-0.01f, -0.05f);
-                    default -> rand.triangle(-0.01f, 0.01f);
-            };
-            //y
-            var dY = switch(pState.getValue(FACING)){
-                    case UP -> rand.triangle(0.01f, 0.05f);
-                    case DOWN -> rand.triangle(-0.01f, -0.05f);
-                    default -> rand.triangle(-0.01f, 0.01f);
-            };
-            //z
-            var dZ = switch(pState.getValue(FACING)){
-                    case SOUTH -> rand.triangle(0.01f, 0.05f);
-                    case NORTH -> rand.triangle(-0.01f, -0.05f);
-                    default -> rand.triangle(-0.01f, 0.01f);
-            };
             int[] colors = {0xff_6f4fab, 0xff_b38ef3, 0xff_cfa0f3, 0xff_cfa0f3, 0xff_fffdd5};
             pLevel.addParticle(new ConjureParticleOptions(colors[rand.nextInt(colors.length)]), cx, cy, cz,
-                dX, dY, dZ);
+                    rand.nextFloat(-0.01f, 0.01f), rand.nextFloat(0.01f, 0.05f), rand.nextFloat(-0.01f, 0.01f));
                 
             if (rand.nextFloat() < 0.08f) {
                 pLevel.playLocalSound(cx, cy, cz,

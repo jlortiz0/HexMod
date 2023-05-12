@@ -29,10 +29,10 @@ public class RegisterMisc {
             ((AccessorVillager) villager).hex$releaseAllPois();
             HexAPI.instance().defaultBrainsweepingBehavior().accept(villager);
         });
-        HexAPI.instance().registerCustomBrainsweepingBehavior(EntityType.ALLAY, allay -> {
-            allay.getBrain().eraseMemory(MemoryModuleType.LIKED_PLAYER);
-            HexAPI.instance().defaultBrainsweepingBehavior().accept(allay);
-        });
+//        HexAPI.instance().registerCustomBrainsweepingBehavior(EntityType.ALLAY, allay -> {
+//            allay.getBrain().eraseMemory(MemoryModuleType.LIKED_PLAYER);
+//            HexAPI.instance().defaultBrainsweepingBehavior().accept(allay);
+//        });
     }
 
     private static Vec3 arrowVelocitizer(AbstractArrow arrow) {

@@ -6,6 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.LongArrayTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -68,7 +69,7 @@ public class Vec3Iota extends Iota {
     }
 
     public static Component display(double x, double y, double z) {
-        return Component.literal(String.format("(%.2f, %.2f, %.2f)", x, y, z))
+        return new TextComponent(String.format("(%.2f, %.2f, %.2f)", x, y, z))
             .withStyle(ChatFormatting.RED);
     }
 

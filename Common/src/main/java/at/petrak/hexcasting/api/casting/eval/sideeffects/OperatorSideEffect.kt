@@ -22,7 +22,7 @@ sealed class OperatorSideEffect {
 
     data class RequiredEnlightenment(val awardStat: Boolean) : OperatorSideEffect() {
         override fun performEffect(harness: CastingVM): Boolean {
-            harness.env.caster?.sendSystemMessage("hexcasting.message.cant_great_spell".asTranslatedComponent)
+            harness.env.caster?.sendMessage("hexcasting.message.cant_great_spell".asTranslatedComponent, Util.NIL_UUID)
 
             if (awardStat)
                 HexAdvancementTriggers.FAIL_GREAT_SPELL_TRIGGER.trigger(harness.env.caster)

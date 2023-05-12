@@ -33,6 +33,8 @@ import net.minecraft.util.FormattedCharSequence
 import net.minecraft.util.Mth
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.phys.Vec2
+import java.util.*
+import kotlin.collections.HashSet
 import kotlin.math.*
 
 // TODO winfy: fix this class to use ExecutionClientView
@@ -51,8 +53,6 @@ class GuiSpellcasting constructor(
     private val usedSpots: MutableSet<HexCoord> = HashSet()
 
     private var ambianceSoundInstance: GridSoundInstance? = null
-
-    private val randSrc = SoundInstance.createUnseededRandom()
 
     init {
         for ((pattern, origin) in patterns) {
@@ -139,7 +139,6 @@ class GuiSpellcasting constructor(
                         SoundSource.PLAYERS,
                         0.25f,
                         1f,
-                        randSrc,
                         this.ambianceSoundInstance!!.x,
                         this.ambianceSoundInstance!!.y,
                         this.ambianceSoundInstance!!.z,
@@ -215,7 +214,6 @@ class GuiSpellcasting constructor(
                             SoundSource.PLAYERS,
                             0.25f,
                             1f + (Math.random().toFloat() - 0.5f) * 0.1f,
-                            randSrc,
                             this.ambianceSoundInstance!!.x,
                             this.ambianceSoundInstance!!.y,
                             this.ambianceSoundInstance!!.z,

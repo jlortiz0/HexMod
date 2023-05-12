@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,16 +16,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.Random;
+
 @Mixin(ClientLevel.class)
 public abstract class MixinClientLevel {
 
     @Inject(method = "doAnimateTick",
-        at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;animateTick" +
-            "(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;" +
-            "Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V"),
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;animateTick(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Ljava/util/Random;)V"),
         locals = LocalCapture.CAPTURE_FAILSOFT)
-    public void addBuddingAmethystParticles(int $$0, int $$1, int $$2, int $$3, RandomSource rand, Block $$5,
-        BlockPos.MutableBlockPos pos, CallbackInfo ci, int trueX, int trueY, int trueZ, BlockState state) {
+    public void addBuddingAmethystParticles(int $$0, int $$1, int $$2, int $$3, Random rand, Block $$5,
+                                            BlockPos.MutableBlockPos pos, CallbackInfo ci, int trueX, int trueY, int trueZ, BlockState state) {
         ClientLevel self = ((ClientLevel) (Object) this);
 
         if (state.is(Blocks.BUDDING_AMETHYST)) {

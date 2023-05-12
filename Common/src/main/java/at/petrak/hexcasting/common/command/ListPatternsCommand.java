@@ -12,6 +12,8 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.ResourceLocationArgument;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -64,11 +66,11 @@ public class ListPatternsCommand {
             .toList();
 
         var ow = source.getLevel().getServer().overworld();
-        source.sendSuccess(Component.translatable("command.hexcasting.pats.listing"), false);
+        source.sendSuccess(new TranslatableComponent("command.hexcasting.pats.listing"), false);
         for (var key : listing) {
             var pat = PatternRegistryManifest.getCanonicalStrokesPerWorld(key, ow);
 
-            source.sendSuccess(Component.literal(key.location().toString())
+            source.sendSuccess(new TextComponent(key.location().toString())
                 .append(": ")
                 .append(new PatternIota(pat).display()), false);
         }
@@ -101,7 +103,7 @@ public class ListPatternsCommand {
             });
 
             source.sendSuccess(
-                Component.translatable("command.hexcasting.pats.all",
+                new TranslatableComponent("command.hexcasting.pats.all",
                     lookup.size(),
                     targets.size() == 1 ? targets.iterator().next().getDisplayName() : targets.size()),
                 true);
@@ -122,7 +124,7 @@ public class ListPatternsCommand {
             stack.setTag(tag);
 
             source.sendSuccess(
-                Component.translatable(
+                new TranslatableComponent(
                     "command.hexcasting.pats.specific.success",
                     stack.getDisplayName(),
                     patternName,

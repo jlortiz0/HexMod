@@ -24,6 +24,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import org.jetbrains.annotations.NotNull;
@@ -159,8 +161,8 @@ public class PatternIota extends Iota {
             bob.append(" ");
             bob.append(sig);
         }
-        return Component.translatable("hexcasting.tooltip.pattern_iota",
-                Component.literal(bob.toString()).withStyle(ChatFormatting.WHITE))
+        return new TranslatableComponent("hexcasting.tooltip.pattern_iota",
+                new TextComponent(bob.toString()).withStyle(ChatFormatting.WHITE))
             .withStyle(ChatFormatting.GOLD);
     }
 }

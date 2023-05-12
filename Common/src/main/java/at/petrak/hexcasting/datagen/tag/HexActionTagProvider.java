@@ -30,4 +30,9 @@ public class HexActionTagProvider extends TagsProvider<ActionRegistryEntry> {
         }
         // deciding that akashic write can be just a normal spell (as a treat)
     }
+
+    @Override
+    public String getName() {
+        return "Hexcasting Spell Tags";
+    }
 }

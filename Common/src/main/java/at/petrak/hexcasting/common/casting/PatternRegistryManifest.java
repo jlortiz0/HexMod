@@ -55,8 +55,9 @@ public class PatternRegistryManifest {
         var postCalculationNeeders = new ArrayList<ResourceKey<ActionRegistryEntry>>();
 
         var registry = IXplatAbstractions.INSTANCE.getActionRegistry();
-        for (var key : registry.registryKeySet()) {
-            var entry = registry.get(key);
+        for (var thing : registry.entrySet()) {
+            var key = thing.getKey();
+            var entry = thing.getValue();
             if (HexUtils.isOfTag(registry, key, HexTags.Actions.PER_WORLD_PATTERN)) {
                 // We might be double-inserting here, once when the client does it and once when the server does
                 // However, we do need both to happen (what if it's a dedicated client connecting to a dedicated
@@ -101,11 +102,10 @@ public class PatternRegistryManifest {
     @Nullable
     public static Pair<SpecialHandler, ResourceKey<SpecialHandler.Factory<?>>> matchPatternToSpecialHandler(HexPattern pat) {
         var registry = IXplatAbstractions.INSTANCE.getSpecialHandlerRegistry();
-        for (var key : registry.registryKeySet()) {
-            var factory = registry.get(key);
-            var handler = factory.tryMatch(pat);
+        for (var entry : registry.entrySet()) {
+            var handler = entry.getValue().tryMatch(pat);
             if (handler != null) {
-                return Pair.of(handler, key);
+                return Pair.of(handler, entry.getKey());
             }
         }
         return null;

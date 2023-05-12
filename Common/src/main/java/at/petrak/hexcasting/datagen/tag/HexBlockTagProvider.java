@@ -94,4 +94,9 @@ public class HexBlockTagProvider extends PaucalBlockTagProvider {
         tag(BlockTags.WOODEN_BUTTONS)
             .add(HexBlocks.EDIFIED_BUTTON);
     }
+
+    @Override
+    public String getName() {
+        return "Hexcasting Block Tags";
+    }
 }

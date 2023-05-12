@@ -9,6 +9,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -50,15 +52,15 @@ public class ItemSpellbook extends Item implements IotaHolderItem {
             int highest = highestPage(stack);
             if (highest != 0) {
                 if (sealed) {
-                    tooltip.add(Component.translatable("hexcasting.tooltip.spellbook.page.sealed",
-                            Component.literal(String.valueOf(pageIdx)).withStyle(ChatFormatting.WHITE),
-                            Component.literal(String.valueOf(highest)).withStyle(ChatFormatting.WHITE),
-                            Component.translatable("hexcasting.tooltip.spellbook.sealed").withStyle(ChatFormatting.GOLD))
+                    tooltip.add(new TranslatableComponent("hexcasting.tooltip.spellbook.page.sealed",
+                            new TextComponent(String.valueOf(pageIdx)).withStyle(ChatFormatting.WHITE),
+                            new TextComponent(String.valueOf(highest)).withStyle(ChatFormatting.WHITE),
+                            new TranslatableComponent("hexcasting.tooltip.spellbook.sealed").withStyle(ChatFormatting.GOLD))
                         .withStyle(ChatFormatting.GRAY));
                 } else {
-                    tooltip.add(Component.translatable("hexcasting.tooltip.spellbook.page",
-                            Component.literal(String.valueOf(pageIdx)).withStyle(ChatFormatting.WHITE),
-                            Component.literal(String.valueOf(highest)).withStyle(ChatFormatting.WHITE))
+                    tooltip.add(new TranslatableComponent("hexcasting.tooltip.spellbook.page",
+                            new TextComponent(String.valueOf(pageIdx)).withStyle(ChatFormatting.WHITE),
+                            new TextComponent(String.valueOf(highest)).withStyle(ChatFormatting.WHITE))
                         .withStyle(ChatFormatting.GRAY));
                 }
             } else {
@@ -72,16 +74,16 @@ public class ItemSpellbook extends Item implements IotaHolderItem {
             boolean overridden = NBTHelper.hasString(stack, TAG_OVERRIDE_VISUALLY);
             if (sealed) {
                 if (overridden) {
-                    tooltip.add(Component.translatable("hexcasting.tooltip.spellbook.sealed").withStyle(
+                    tooltip.add(new TranslatableComponent("hexcasting.tooltip.spellbook.sealed").withStyle(
                         ChatFormatting.GOLD));
                 } else {
-                    tooltip.add(Component.translatable("hexcasting.tooltip.spellbook.empty.sealed",
-                            Component.translatable("hexcasting.tooltip.spellbook.sealed").withStyle(ChatFormatting.GOLD))
+                    tooltip.add(new TranslatableComponent("hexcasting.tooltip.spellbook.empty.sealed",
+                            new TranslatableComponent("hexcasting.tooltip.spellbook.sealed").withStyle(ChatFormatting.GOLD))
                         .withStyle(ChatFormatting.GRAY));
                 }
             } else if (!overridden) {
                 tooltip.add(
-                    Component.translatable("hexcasting.tooltip.spellbook.empty").withStyle(ChatFormatting.GRAY));
+                    new TranslatableComponent("hexcasting.tooltip.spellbook.empty").withStyle(ChatFormatting.GRAY));
             }
         }
 

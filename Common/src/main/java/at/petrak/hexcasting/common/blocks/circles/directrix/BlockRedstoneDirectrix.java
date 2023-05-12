@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -23,6 +22,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Random;
 
 public class BlockRedstoneDirectrix extends BlockCircleComponent {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
@@ -85,7 +85,7 @@ public class BlockRedstoneDirectrix extends BlockCircleComponent {
 
 
     @Override
-    public void animateTick(BlockState bs, Level pLevel, BlockPos pos, RandomSource rand) {
+    public void animateTick(BlockState bs, Level pLevel, BlockPos pos, Random rand) {
         if (bs.getValue(REDSTONE_POWERED)) {
             for (int i = 0; i < 2; i++) {
                 var step = bs.getValue(FACING).getOpposite().step();

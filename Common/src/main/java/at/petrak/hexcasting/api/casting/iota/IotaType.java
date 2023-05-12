@@ -10,6 +10,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.FormattedCharSequence;
@@ -50,7 +52,7 @@ public abstract class IotaType<T extends Iota> {
      */
     public Component typeName() {
         var key = HexIotaTypes.REGISTRY.getKey(this);
-        return Component.translatable("hexcasting.iota." + key)
+        return new TranslatableComponent("hexcasting.iota." + key)
             .withStyle(style -> style.withColor(TextColor.fromRgb(color())));
     }
 
@@ -155,7 +157,7 @@ public abstract class IotaType<T extends Iota> {
     }
 
     private static Component brokenIota() {
-        return Component.translatable("hexcasting.spelldata.unknown")
+        return new TranslatableComponent("hexcasting.spelldata.unknown")
             .withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC);
     }
 
@@ -189,7 +191,7 @@ public abstract class IotaType<T extends Iota> {
         else {
             var first = splitted.get(0);
             return FormattedCharSequence.fromPair(first,
-                Component.literal("...").withStyle(ChatFormatting.GRAY).getVisualOrderText());
+                new TextComponent("...").withStyle(ChatFormatting.GRAY).getVisualOrderText());
         }
     }
 

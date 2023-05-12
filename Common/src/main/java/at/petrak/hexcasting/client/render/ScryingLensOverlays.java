@@ -11,9 +11,7 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.chat.*;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -51,11 +49,11 @@ public class ScryingLensOverlays {
 
                 lines.add(new Pair<>(
                     new ItemStack(Items.MUSIC_DISC_CHIRP),
-                    Component.literal(String.valueOf(instrument.ordinal()))
+                    new TextComponent(String.valueOf(instrument.ordinal()))
                         .withStyle(color(instrumentColor(instrument)))));
                 lines.add(new Pair<>(
                     new ItemStack(Items.NOTE_BLOCK),
-                    Component.literal(String.valueOf(note))
+                    new TextComponent(String.valueOf(note))
                         .withStyle(color(noteColor))));
             });
 
@@ -75,14 +73,14 @@ public class ScryingLensOverlays {
                 int comparatorValue = ScryingLensOverlayRegistry.getComparatorValue(true);
                 lines.add(new Pair<>(
                     new ItemStack(Items.REDSTONE),
-                    Component.literal(comparatorValue == -1 ? "" : String.valueOf(comparatorValue))
+                    new TextComponent(comparatorValue == -1 ? "" : String.valueOf(comparatorValue))
                         .withStyle(redstoneColor(comparatorValue))));
 
                 boolean compare = state.getValue(ComparatorBlock.MODE) == ComparatorMode.COMPARE;
 
                 lines.add(new Pair<>(
                     new ItemStack(Items.REDSTONE_TORCH),
-                    Component.literal(compare ? ">=" : "-")
+                    new TextComponent(compare ? ">=" : "-")
                         .withStyle(redstoneColor(compare ? 0 : 15))));
             });
 
@@ -91,22 +89,22 @@ public class ScryingLensOverlays {
                 int power = getPoweredRailStrength(world, pos, state);
                 lines.add(new Pair<>(
                     new ItemStack(Items.POWERED_RAIL),
-                    Component.literal(String.valueOf(power))
+                    new TextComponent(String.valueOf(power))
                         .withStyle(redstoneColor(power, 9))));
             });
 
         ScryingLensOverlayRegistry.addDisplayer(Blocks.REPEATER,
             (lines, state, pos, observer, world, direction) -> lines.add(new Pair<>(
                 new ItemStack(Items.CLOCK),
-                Component.literal(String.valueOf(state.getValue(RepeaterBlock.DELAY)))
+                new TextComponent(String.valueOf(state.getValue(RepeaterBlock.DELAY)))
                     .withStyle(ChatFormatting.YELLOW))));
 
         ScryingLensOverlayRegistry.addPredicateDisplayer(
             (state, pos, observer, world, direction) -> state.getBlock() instanceof BeehiveBlock,
             (lines, state, pos, observer, world, direction) -> {
                 int count = ScryingLensOverlayRegistry.getBeeValue();
-                lines.add(new Pair<>(new ItemStack(Items.BEE_NEST), count == -1 ? Component.empty() :
-                    Component.translatable(
+                lines.add(new Pair<>(new ItemStack(Items.BEE_NEST), count == -1 ? new TextComponent("") :
+                    new TranslatableComponent(
                         "hexcasting.tooltip.lens.bee" + (count == 1 ? ".single" : ""),
                         count
                     )));
@@ -127,7 +125,7 @@ public class ScryingLensOverlays {
 
                 lines.add(0, new Pair<>(
                     new ItemStack(Items.REDSTONE),
-                    Component.literal(String.valueOf(signalStrength))
+                    new TextComponent(String.valueOf(signalStrength))
                         .withStyle(redstoneColor(signalStrength))));
             });
 
@@ -138,7 +136,7 @@ public class ScryingLensOverlays {
                 lines.add(
                     new Pair<>(
                         new ItemStack(Items.COMPARATOR),
-                        Component.literal(comparatorValue == -1 ? "" : String.valueOf(comparatorValue))
+                        new TextComponent(comparatorValue == -1 ? "" : String.valueOf(comparatorValue))
                             .withStyle(redstoneColor(comparatorValue))));
             });
     }

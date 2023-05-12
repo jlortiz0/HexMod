@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,7 +18,7 @@ import java.util.Random;
 public class GarbageIota extends Iota {
     private static final Object NULL_SUBSTITUTE = new Object();
 
-    public static final Component DISPLAY = Component.literal("arimfexendrapuse")
+    public static final Component DISPLAY = new TextComponent("arimfexendrapuse")
         .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.OBFUSCATED);
 
     private static final Random RANDOM = new Random();

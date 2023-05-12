@@ -6,8 +6,10 @@ import at.petrak.hexcasting.api.casting.iota.IotaType;
 import at.petrak.hexcasting.api.item.IotaHolderItem;
 import at.petrak.hexcasting.api.utils.NBTHelper;
 import at.petrak.hexcasting.common.lib.HexSounds;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -56,7 +58,7 @@ public class ItemAbacus extends Item implements IotaHolderItem {
             if (oldNum == 69) {
                 key += ".nice";
             }
-            player.displayClientMessage(Component.translatable(key), true);
+            player.sendMessage(new TranslatableComponent(key), Util.NIL_UUID);
 
             return InteractionResultHolder.sidedSuccess(stack, world.isClientSide);
         } else {

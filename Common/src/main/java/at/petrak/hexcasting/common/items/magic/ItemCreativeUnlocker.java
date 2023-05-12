@@ -9,11 +9,14 @@ import at.petrak.hexcasting.common.items.ItemLoreFragment;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.lib.HexSounds;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -21,6 +24,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -99,9 +103,9 @@ public class ItemCreativeUnlocker extends Item implements MediaHolderItem {
         String prefix = "item.hexcasting.creative_unlocker.";
 
         String emphasis = Language.getInstance().getOrDefault(prefix + "for_emphasis");
-        MutableComponent emphasized = Component.empty();
+        MutableComponent emphasized = new TextComponent("");
         for (int i = 0; i < emphasis.length(); i++) {
-            emphasized.append(rainbow(Component.literal("" + emphasis.charAt(i)), i, level));
+            emphasized.append(rainbow(new TextComponent("" + emphasis.charAt(i)), i, level));
         }
 
         return emphasized;
@@ -198,17 +202,17 @@ public class ItemCreativeUnlocker extends Item implements MediaHolderItem {
             NBTHelper.remove(stack, tag);
             for (long i : arr) {
                 if (i < 0) {
-                    entity.sendSystemMessage(Component.translatable("hexcasting.debug.media_" + langKey,
+                    entity.sendMessage(new TranslatableComponent("hexcasting.debug.media_" + langKey,
                             stack.getDisplayName(),
-                            Component.translatable("hexcasting.debug." + allKey).withStyle(ChatFormatting.GRAY))
-                        .withStyle(ChatFormatting.LIGHT_PURPLE));
+                            new TranslatableComponent("hexcasting.debug." + allKey).withStyle(ChatFormatting.GRAY))
+                        .withStyle(ChatFormatting.LIGHT_PURPLE), Util.NIL_UUID);
                 } else {
-                    entity.sendSystemMessage(Component.translatable("hexcasting.debug.media_" + langKey + ".with_dust",
+                    entity.sendMessage(new TranslatableComponent("hexcasting.debug.media_" + langKey + ".with_dust",
                             stack.getDisplayName(),
-                            Component.literal("" + i).withStyle(ChatFormatting.WHITE),
-                            Component.literal(String.format("%.2f", i * 1.0 / MediaConstants.DUST_UNIT)).withStyle(
+                            new TextComponent("" + i).withStyle(ChatFormatting.WHITE),
+                            new TextComponent(String.format("%.2f", i * 1.0 / MediaConstants.DUST_UNIT)).withStyle(
                                 ChatFormatting.WHITE))
-                        .withStyle(ChatFormatting.LIGHT_PURPLE));
+                        .withStyle(ChatFormatting.LIGHT_PURPLE), Util.NIL_UUID);
                 }
             }
         }
@@ -271,12 +275,12 @@ public class ItemCreativeUnlocker extends Item implements MediaHolderItem {
         TooltipFlag isAdvanced) {
         Component emphasized = infiniteMedia(level);
 
-        MutableComponent modName = Component.translatable("item.hexcasting.creative_unlocker.mod_name").withStyle(
+        MutableComponent modName = new TranslatableComponent("item.hexcasting.creative_unlocker.mod_name").withStyle(
             (s) -> s.withColor(ItemMediaHolder.HEX_COLOR));
 
         tooltipComponents.add(
-            Component.translatable("hexcasting.spelldata.onitem", emphasized).withStyle(ChatFormatting.GRAY));
-        tooltipComponents.add(Component.translatable("item.hexcasting.creative_unlocker.tooltip", modName).withStyle(ChatFormatting.GRAY));
+            new TranslatableComponent("hexcasting.spelldata.onitem", emphasized).withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(new TranslatableComponent("item.hexcasting.creative_unlocker.tooltip", modName).withStyle(ChatFormatting.GRAY));
     }
 
     private static void addChildren(Advancement root, List<Advancement> out) {

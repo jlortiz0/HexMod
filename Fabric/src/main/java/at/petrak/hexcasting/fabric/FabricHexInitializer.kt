@@ -37,8 +37,7 @@ import at.petrak.hexcasting.interop.HexInterop
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import io.github.tropheusj.serialization_hooks.ingredient.IngredientDeserializer
 import net.fabricmc.api.ModInitializer
-import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback
 import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
@@ -46,7 +45,8 @@ import net.fabricmc.fabric.api.event.player.AttackBlockCallback
 import net.fabricmc.fabric.api.event.player.UseEntityCallback
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry
-import net.minecraft.commands.synchronization.SingletonArgumentInfo
+import net.minecraft.commands.synchronization.ArgumentTypes
+import net.minecraft.commands.synchronization.EmptyArgumentSerializer
 import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.InteractionResult
@@ -64,10 +64,10 @@ object FabricHexInitializer : ModInitializer {
 
         initRegistries()
 
-        ArgumentTypeRegistry.registerArgumentType(
-            modLoc("pattern"),
+        ArgumentTypes.register(
+            "hexcasting:pattern",
             PatternResLocArgument::class.java,
-            SingletonArgumentInfo.contextFree { PatternResLocArgument.id() }
+            EmptyArgumentSerializer { PatternResLocArgument.id() }
         )
         HexAdvancementTriggers.registerTriggers()
         HexComposting.setup()
@@ -101,7 +101,7 @@ object FabricHexInitializer : ModInitializer {
         ServerTickEvents.END_WORLD_TICK.register(OpFlight::tickAllPlayers)
         ServerTickEvents.END_WORLD_TICK.register(OpAltiora::checkAllPlayers)
 
-        CommandRegistrationCallback.EVENT.register { dp, _, _ -> HexCommands.register(dp) }
+        CommandRegistrationCallback.EVENT.register { dp, _ -> HexCommands.register(dp) }
 
         LootTableEvents.MODIFY.register { _, _, id, supplier, _ ->
             FabricHexLootModJankery.lootLoad(id, supplier::withPool)

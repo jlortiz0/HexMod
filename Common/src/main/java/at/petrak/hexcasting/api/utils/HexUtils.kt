@@ -12,6 +12,8 @@ import net.minecraft.nbt.*
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.MutableComponent
 import net.minecraft.network.chat.Style
+import net.minecraft.network.chat.TextComponent
+import net.minecraft.network.chat.TranslatableComponent
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.TagKey
@@ -185,10 +187,10 @@ operator fun MutableComponent.plusAssign(component: Component) {
     append(component)
 }
 
-val String.asTextComponent: MutableComponent get() = Component.literal(this)
-val String.asTranslatedComponent: MutableComponent get() = Component.translatable(this)
+val String.asTextComponent: MutableComponent get() = TextComponent(this)
+val String.asTranslatedComponent: MutableComponent get() = TranslatableComponent(this)
 
-fun String.asTranslatedComponent(vararg args: Any): MutableComponent = Component.translatable(this, *args)
+fun String.asTranslatedComponent(vararg args: Any): MutableComponent = TranslatableComponent(this, *args)
 
 /**
  * Represents a value that the garbage collector is still allowed to collect.

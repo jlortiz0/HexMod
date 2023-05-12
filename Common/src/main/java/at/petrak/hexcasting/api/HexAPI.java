@@ -9,6 +9,7 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import com.google.common.base.Suppliers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -63,17 +64,17 @@ public interface HexAPI {
     }
 
     default Component getActionI18n(ResourceKey<ActionRegistryEntry> key, boolean isGreat) {
-        return Component.translatable(getActionI18nKey(key))
+        return new TranslatableComponent(getActionI18nKey(key))
             .withStyle(isGreat ? ChatFormatting.GOLD : ChatFormatting.LIGHT_PURPLE);
     }
 
     default Component getSpecialHandlerI18n(ResourceKey<SpecialHandler.Factory<?>> key) {
-        return Component.translatable(getSpecialHandlerI18nKey(key))
+        return new TranslatableComponent(getSpecialHandlerI18nKey(key))
             .withStyle(ChatFormatting.LIGHT_PURPLE);
     }
 
     default Component getRawHookI18n(ResourceLocation name) {
-        return Component.translatable(getRawHookI18nKey(name)).withStyle(ChatFormatting.LIGHT_PURPLE);
+        return new TranslatableComponent(getRawHookI18nKey(name)).withStyle(ChatFormatting.LIGHT_PURPLE);
     }
 
     /**

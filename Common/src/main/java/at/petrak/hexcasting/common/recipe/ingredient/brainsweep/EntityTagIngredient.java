@@ -6,6 +6,8 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -42,8 +44,8 @@ public class EntityTagIngredient extends BrainsweepeeIngredient {
         String key = tagKey(this.entityTypeTag.location());
         boolean moddersDidAGoodJob = I18n.exists(key);
         return moddersDidAGoodJob
-            ? Component.translatable(key)
-            : Component.literal("#" + this.entityTypeTag.location());
+            ? new TranslatableComponent(key)
+            : new TextComponent("#" + this.entityTypeTag.location());
     }
 
     @Override
@@ -54,11 +56,11 @@ public class EntityTagIngredient extends BrainsweepeeIngredient {
 
         var out = new ArrayList<Component>();
         out.add(moddersDidAGoodJob
-            ? Component.translatable(key)
-            : Component.literal("#" + loc));
+            ? new TranslatableComponent(key)
+            : new TextComponent("#" + loc));
         if (advanced && moddersDidAGoodJob) {
             // Print it anyways
-            out.add(Component.literal("#" + loc).withStyle(ChatFormatting.DARK_GRAY));
+            out.add(new TextComponent("#" + loc).withStyle(ChatFormatting.DARK_GRAY));
         }
 
         out.add(BrainsweepeeIngredient.getModNameComponent(loc.getNamespace()));

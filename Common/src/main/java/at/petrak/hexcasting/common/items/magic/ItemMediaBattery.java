@@ -35,7 +35,7 @@ public class ItemMediaBattery extends ItemMediaHolder {
     @Override
     public void fillItemCategory(@NotNull CreativeModeTab tab, @NotNull NonNullList<ItemStack> items) {
         // who was drunk at the wheel when they named this
-        if (allowedIn(tab)) {
+        if (allowdedIn(tab)) {
             var mediamounts = new int[]{
                 MediaConstants.CRYSTAL_UNIT,
                 20 * MediaConstants.CRYSTAL_UNIT,

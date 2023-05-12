@@ -6,6 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.ByteTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -62,7 +63,7 @@ public class BooleanIota extends Iota {
     }
 
     public static Component display(boolean b) {
-        return Component.translatable(b ? "hexcasting.tooltip.boolean_true" : "hexcasting.tooltip.boolean_false")
+        return new TranslatableComponent(b ? "hexcasting.tooltip.boolean_true" : "hexcasting.tooltip.boolean_false")
             .withStyle(b ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_RED);
     }
 }

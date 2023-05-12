@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -15,6 +14,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Random;
 
 public class BlockQuenchedAllay extends Block implements EntityBlock {
     public static final int VARIANTS = 4;
@@ -35,7 +36,7 @@ public class BlockQuenchedAllay extends Block implements EntityBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random rand) {
         ParticleOptions options = new ConjureParticleOptions(0x8932b8);
         Vec3 center = Vec3.atCenterOf(pos);
         for (Direction direction : Direction.values()) {

@@ -12,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
@@ -277,7 +278,7 @@ public abstract class BlockEntityAbstractImpetus extends HexBlockEntity implemen
                 lines.add(new Pair<>(new ItemStack(HexItems.AMETHYST_DUST), ItemCreativeUnlocker.infiniteMedia(world)));
             } else {
                 var dustCount = (float) beai.getMedia() / (float) MediaConstants.DUST_UNIT;
-                var dustCmp = Component.translatable("hexcasting.tooltip.media",
+                var dustCmp = new TranslatableComponent("hexcasting.tooltip.media",
                     DUST_AMOUNT.format(dustCount));
                 lines.add(new Pair<>(new ItemStack(HexItems.AMETHYST_DUST), dustCmp));
             }

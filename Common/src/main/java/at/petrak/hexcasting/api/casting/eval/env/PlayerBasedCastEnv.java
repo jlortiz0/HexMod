@@ -15,6 +15,7 @@ import at.petrak.hexcasting.api.mod.HexStatistics;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.api.utils.HexUtils;
 import at.petrak.hexcasting.api.utils.MediaHelper;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
@@ -204,7 +205,7 @@ public abstract class PlayerBasedCastEnv extends CastingEnvironment {
 
     protected void sendMishapMsgToPlayer(OperatorSideEffect.DoMishap mishap) {
         var msg = mishap.getMishap().errorMessageWithName(this, mishap.getErrorCtx());
-        this.caster.sendSystemMessage(msg);
+        this.caster.sendMessage(msg, Util.NIL_UUID);
     }
 
     @Override

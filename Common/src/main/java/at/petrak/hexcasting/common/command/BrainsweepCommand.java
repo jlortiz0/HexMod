@@ -7,6 +7,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Mob;
 
 public class BrainsweepCommand {
@@ -18,17 +19,17 @@ public class BrainsweepCommand {
                 if (target instanceof Mob mob) {
                     if (IXplatAbstractions.INSTANCE.isBrainswept(mob)) {
                         ctx.getSource().sendFailure(
-                            Component.translatable("command.hexcasting.brainsweep.fail.already",
+                            new TranslatableComponent("command.hexcasting.brainsweep.fail.already",
                                 mob.getDisplayName()));
                         return 0;
                     }
                     HexAPI.instance().brainsweep(mob);
                     ctx.getSource().sendSuccess(
-                        Component.translatable("command.hexcasting.brainsweep", mob.getDisplayName()), true);
+                        new TranslatableComponent("command.hexcasting.brainsweep", mob.getDisplayName()), true);
                     return 1;
                 } else {
                     ctx.getSource().sendFailure(
-                        Component.translatable("command.hexcasting.brainsweep.fail.badtype",
+                        new TranslatableComponent("command.hexcasting.brainsweep.fail.badtype",
                             target.getDisplayName()));
                     return 0;
                 }

@@ -6,7 +6,6 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -20,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Random;
 
 // Facing dir is the direction it starts searching for slates in to start
 public abstract class BlockAbstractImpetus extends BlockCircleComponent implements EntityBlock {
@@ -57,7 +57,7 @@ public abstract class BlockAbstractImpetus extends BlockCircleComponent implemen
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
         if (pLevel.getBlockEntity(pPos) instanceof BlockEntityAbstractImpetus tile && pState.getValue(ENERGIZED)) {
             tile.tickExecution();
         }

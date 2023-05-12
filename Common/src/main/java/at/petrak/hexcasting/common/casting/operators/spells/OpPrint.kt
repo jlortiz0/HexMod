@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import net.minecraft.Util
 
 // TODO should this dump the whole stack
 object OpPrint : Action {
@@ -34,7 +35,7 @@ object OpPrint : Action {
 
     private data class Spell(val datum: Iota) : RenderedSpell {
         override fun cast(ctx: CastingEnvironment) {
-            ctx.caster?.sendSystemMessage(datum.display()) // TODO: how to handle in cirles
+            ctx.caster?.sendMessage(datum.display(), Util.NIL_UUID) // TODO: how to handle in cirles
         }
     }
 }

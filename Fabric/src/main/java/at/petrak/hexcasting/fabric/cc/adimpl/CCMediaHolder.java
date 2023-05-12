@@ -56,7 +56,7 @@ public abstract class CCMediaHolder extends ItemComponent implements ADMediaHold
 
         @Override
         public boolean canConstructBattery() {
-            return this.manaHolder.canConstructBattery(this.stack);
+            return this.mediaHolder.canConstructBattery(this.stack);
         }
 
         @Override

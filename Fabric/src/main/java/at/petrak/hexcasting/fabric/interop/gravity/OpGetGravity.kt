@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
-import com.fusionflux.gravity_api.api.GravityChangerAPI
+import me.andrew.gravitychanger.api.GravityChangerAPI
 import net.minecraft.world.phys.Vec3
 
 object OpGetGravity : ConstMediaAction {

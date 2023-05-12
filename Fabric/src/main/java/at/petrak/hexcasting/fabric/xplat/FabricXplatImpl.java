@@ -301,7 +301,7 @@ public class FabricXplatImpl implements IXplatAbstractions {
         }
         try (Transaction transaction = Transaction.openOuter()) {
             boolean any = false;
-            for (var view : target) {
+            for (var view : target.iterable(transaction)) {
                 long extracted = view.extract(view.getResource(), view.getAmount(), transaction);
                 if (extracted > 0) {
                     any = true;

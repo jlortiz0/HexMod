@@ -6,6 +6,8 @@ import at.petrak.hexcasting.api.utils.MediaHelper;
 import at.petrak.hexcasting.api.utils.NBTHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -100,16 +102,16 @@ public abstract class ItemMediaHolder extends Item implements MediaHolderItem {
 
             var color = TextColor.fromRgb(MediaHelper.mediaBarColor(media, maxMedia));
 
-            var mediamount = Component.literal(DUST_AMOUNT.format(media / (float) MediaConstants.DUST_UNIT));
-            var percentFull = Component.literal(PERCENTAGE.format(100f * fullness) + "%");
-            var maxCapacity = Component.translatable("hexcasting.tooltip.media", DUST_AMOUNT.format(maxMedia / (float) MediaConstants.DUST_UNIT));
+            var mediamount = new TextComponent(DUST_AMOUNT.format(media / (float) MediaConstants.DUST_UNIT));
+            var percentFull = new TextComponent(PERCENTAGE.format(100f * fullness) + "%");
+            var maxCapacity = new TranslatableComponent("hexcasting.tooltip.media", DUST_AMOUNT.format(maxMedia / (float) MediaConstants.DUST_UNIT));
 
             mediamount.withStyle(style -> style.withColor(HEX_COLOR));
             maxCapacity.withStyle(style -> style.withColor(HEX_COLOR));
             percentFull.withStyle(style -> style.withColor(color));
 
             pTooltipComponents.add(
-                Component.translatable("hexcasting.tooltip.media_amount.advanced",
+                new TranslatableComponent("hexcasting.tooltip.media_amount.advanced",
                     mediamount, maxCapacity, percentFull));
         }
 

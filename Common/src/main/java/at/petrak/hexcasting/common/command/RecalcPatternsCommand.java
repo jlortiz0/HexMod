@@ -5,6 +5,7 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 
 public class RecalcPatternsCommand {
     public static void add(LiteralArgumentBuilder<CommandSourceStack> cmd) {
@@ -17,7 +18,7 @@ public class RecalcPatternsCommand {
                     ScrungledPatternsSave.createFromScratch(world.getSeed()));
 
                 ctx.getSource().sendSuccess(
-                    Component.translatable("command.hexcasting.recalc"), true);
+                    new TranslatableComponent("command.hexcasting.recalc"), true);
                 return 1;
             }));
     }

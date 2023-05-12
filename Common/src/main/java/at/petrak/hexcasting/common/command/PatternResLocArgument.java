@@ -12,6 +12,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.ResourceLocationArgument;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
@@ -20,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 public class PatternResLocArgument extends ResourceLocationArgument {
     private static final DynamicCommandExceptionType ERROR_UNKNOWN_PATTERN = new DynamicCommandExceptionType(
         (errorer) ->
-            Component.translatable("hexcasting.pattern.unknown", errorer)
+            new TranslatableComponent("hexcasting.pattern.unknown", errorer)
     );
 
     public static PatternResLocArgument id() {

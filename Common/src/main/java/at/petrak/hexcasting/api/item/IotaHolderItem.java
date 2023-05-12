@@ -10,6 +10,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -102,14 +104,14 @@ public interface IotaHolderItem {
         var datumTag = self.readIotaTag(stack);
         if (datumTag != null) {
             var cmp = IotaType.getDisplay(datumTag);
-            components.add(Component.translatable("hexcasting.spelldata.onitem", cmp));
+            components.add(new TranslatableComponent("hexcasting.spelldata.onitem", cmp));
 
             if (flag.isAdvanced()) {
-                components.add(Component.literal("").append(NbtUtils.toPrettyComponent(datumTag)));
+                components.add(new TextComponent("").append(NbtUtils.toPrettyComponent(datumTag)));
             }
         } else if (NBTHelper.hasString(stack, IotaHolderItem.TAG_OVERRIDE_VISUALLY)) {
-            components.add(Component.translatable("hexcasting.spelldata.onitem",
-                Component.translatable("hexcasting.spelldata.anything").withStyle(ChatFormatting.LIGHT_PURPLE)));
+            components.add(new TranslatableComponent("hexcasting.spelldata.onitem",
+                new TranslatableComponent("hexcasting.spelldata.anything").withStyle(ChatFormatting.LIGHT_PURPLE)));
         }
     }
 }

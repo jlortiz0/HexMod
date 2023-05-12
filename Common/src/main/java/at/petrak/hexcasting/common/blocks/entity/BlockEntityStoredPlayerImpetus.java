@@ -11,6 +11,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -84,10 +85,10 @@ public class BlockEntityStoredPlayerImpetus extends BlockEntityAbstractImpetus {
                 cachedDisplayStack = head;
             }
             lines.add(new Pair<>(cachedDisplayStack,
-                Component.translatable("hexcasting.tooltip.lens.impetus.storedplayer", name.getName())));
+                new TranslatableComponent("hexcasting.tooltip.lens.impetus.storedplayer", name.getName())));
         } else {
             lines.add(new Pair<>(new ItemStack(Items.BARRIER),
-                Component.translatable("hexcasting.tooltip.lens.impetus.storedplayer.none")));
+                new TranslatableComponent("hexcasting.tooltip.lens.impetus.storedplayer.none")));
         }
     }
 

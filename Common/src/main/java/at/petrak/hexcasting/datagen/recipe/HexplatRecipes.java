@@ -65,7 +65,7 @@ public class HexplatRecipes extends PaucalRecipeProvider {
         staffRecipe(recipes, HexItems.STAFF_ACACIA, Items.ACACIA_PLANKS);
         staffRecipe(recipes, HexItems.STAFF_CRIMSON, Items.CRIMSON_PLANKS);
         staffRecipe(recipes, HexItems.STAFF_WARPED, Items.WARPED_PLANKS);
-        staffRecipe(recipes, HexItems.STAFF_MANGROVE, Items.MANGROVE_PLANKS);
+        // staffRecipe(recipes, HexItems.STAFF_MANGROVE, Items.MANGROVE_PLANKS);
         staffRecipe(recipes, HexItems.STAFF_EDIFIED, HexBlocks.EDIFIED_PLANKS.asItem());
         staffRecipe(recipes, HexItems.STAFF_QUENCHED, HexItems.QUENCHED_SHARD);
         staffRecipe(recipes, HexItems.STAFF_MINDSPLICE, Ingredient.of(HexTags.Items.MINDFLAYED_CIRCLE_COMPONENTS));
@@ -433,11 +433,11 @@ public class HexplatRecipes extends PaucalRecipeProvider {
             .save(recipes, modLoc("brainsweep/akashic_record"));
 
         // Temporary tests
-        new BrainsweepRecipeBuilder(StateIngredientHelper.of(Blocks.AMETHYST_BLOCK),
-            new EntityTypeIngredient(EntityType.ALLAY),
-            HexBlocks.QUENCHED_ALLAY.defaultBlockState(), MediaConstants.CRYSTAL_UNIT)
-            .unlockedBy("enlightenment", enlightenment)
-            .save(recipes, modLoc("brainsweep/quench_allay"));
+//        new BrainsweepRecipeBuilder(StateIngredientHelper.of(Blocks.AMETHYST_BLOCK),
+//            new EntityTypeIngredient(EntityType.ALLAY),
+//            HexBlocks.QUENCHED_ALLAY.defaultBlockState(), MediaConstants.CRYSTAL_UNIT)
+//            .unlockedBy("enlightenment", enlightenment)
+//            .save(recipes, modLoc("brainsweep/quench_allay"));
 
         // Create compat
         this.conditions.apply(new CreateCrushingRecipeBuilder()
