@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.casting.getItemEntity
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadItem
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem
+import at.petrak.hexcasting.api.casting.mishaps.MishapBatteryTooBig
 import at.petrak.hexcasting.api.misc.MediaConstants
 import at.petrak.hexcasting.api.mod.HexTags
 import at.petrak.hexcasting.api.utils.extractMedia
@@ -48,6 +49,12 @@ object OpMakeBattery : SpellAction {
                 "only_one"
             )
         }
+        val holder = handStack.getItem()
+        if (holder is ItemMediaHolder) {
+            if (holder.getMaxMedia(handStack) >= 640000000) {
+                throw MishapBatteryTooBig()
+            }
+        }
 
         ctx.assertEntityInRange(entity)
 
@@ -85,7 +92,8 @@ object OpMakeBattery : SpellAction {
                 if (holder is ItemMediaHolder) {
                     baseMax += holder.getMaxMedia(entityStack) - holder.getMedia(entityStack)
                 }
-                val mediamount = extractMedia(entityStack, drainForBatteries = true)
+                var mediamount = extractMedia(entityStack, drainForBatteries = true, simulate = true)
+                mediamount = extractMedia(entityStack, cost = Math.min(mediamount, 640000000 - baseMax), drainForBatteries = true)
                 if (mediamount > 0) {
                     ctx.caster?.setItemInHand(
                         hand,
