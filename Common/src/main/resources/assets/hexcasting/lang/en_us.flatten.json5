@@ -286,6 +286,9 @@
       "brainsweep.min_level": "Level %s or higher",
       "brainsweep.level": "Level %s",
       "brainsweep.product": "Mindless Body",
+      "media": "%s dust",
+      "media_amount": "Contains %s (%s)",
+      "media_amount.advanced": "Contains: %s/%s (%s)"
     },
     // ^ tooltip
     spelldata: {
@@ -684,39 +687,25 @@
     },
     
     // Patchi stuff!
-    landing: ">>>\
-|     I seem to have discovered a new method of magical arts, in which one draws patterns strange and wild onto a hexagonal grid.\
-|     It fascinates me. I've decided to start a journal of my thoughts and findings.\
-|     $(br2)$(l:https://forum.petra-k.at/index.php)Forum Link/$",
+    landing: "I seem to have discovered a new method of magical arts, in which one draws patterns strange and wild onto a hexagonal grid. It fascinates me. I've decided to start a journal of my thoughts and findings.     $(br2)$(l:https://forum.petra-k.at/index.php)Forum Link/$",
     
     category: {
       basics: {
         "": "Getting Started",
-        "desc": ">>>\
-|         The practitioners of this art would cast their so-called _Hexes by drawing strange patterns in the air with a $(l:items/staff)$(item)Staff/$-- \
-|         or craft $(l:items/hexcasting)$(item)powerful magical items/$ to do the casting for them.\
-|         How might I do the same?"
+        "desc": "The practitioners of this art would cast their so-called _Hexes by drawing strange patterns in the air with a $(l:items/staff)$(item)Staff/$-- or craft $(l:items/hexcasting)$(item)powerful magical items/$ to do the casting for them. How might I do the same?"
       },
       casting: {
         "": "Hex Casting",
-        desc: ">>>\
-|         I've started to understand how the old masters cast their _Hexes! It's a bit complicated,\
-|         but I'm sure I can figure it out. Let's see..."
+        desc: "I've started to understand how the old masters cast their _Hexes! It's a bit complicated, but I'm sure I can figure it out. Let's see..."
       },
       items: {
         "": "Items",
-        desc: ">>>\
-|         I devote this section to the magical and mysterious items I might encounter in my studies.$(br2)\
-|         It seems like many of these items have uses when held alongside my $(l:items/staff)$(item)staff/$.\
-|         I suppose I will have to choose what goes in my other hand carefully."
+        desc: "I devote this section to the magical and mysterious items I might encounter in my studies.$(br2)It seems like many of these items have uses when held alongside my $(l:items/staff)$(item)staff/$. I suppose I will have to choose what goes in my other hand carefully."
       },
       
       greatwork: {
         "": "The Great Work",
-        desc: ">>>\
-|         I have seen... so much. I have... experienced... annihilation and deconstruction and reconstruction.\
-|         I have seen the atoms of the world screaming as they were inverted and subverted and demoted to energy.\
-|         I have seen I have seen I have s$(k)get stick bugged lmao/$",
+        desc: "I have seen... so much. I have... experienced... annihilation and deconstruction and reconstruction. I have seen the atoms of the world screaming as they were inverted and subverted and demoted to energy. I have seen I have seen I have s$(k)get stick bugged lmao/$",
         // alwinfy you think you're so funny
       },
       
@@ -730,12 +719,12 @@
       },
       great_spells: {
         "": "Great Spells",
-        desc: ">>>\
-|         The spells catalogued here are purported to be of legendary difficulty and power.\
-|         They seem to have been recorded only sparsely (for good reason, the texts claim).\
-|         It's probably just the ramblings of extinct traditionalists, though -- a pattern's a pattern.$(br2)\
-|         What could possibly go wrong?"
+        desc: "The spells catalogued here are purported to be of legendary difficulty and power. They seem to have been recorded only sparsely (for good reason, the texts claim). It's probably just the ramblings of extinct traditionalists, though -- a pattern's a pattern.$(br2)What could possibly go wrong?"
       },
+      lore: {
+        "": "Lore",
+        desc: "While exploring, I have found tattered papers detailing research into hexes. I will record any undamaged fragments here."
+      }
     },
     // ^ categories
     
@@ -815,7 +804,16 @@
       weather_manip: "Weather Manipulation",
       zeniths: "Zeniths",
       
-      lore: "Lore",
+      lore: {
+        "terabithia1": "Steles Letter #1",
+        "terabithia2": "Steles Letter #2",
+        "terabithia3": "Steles Letter #3.1",
+        "terabithia4": "Steles Letter #3.2",
+        "terabithia5": "Steles Letter #4",
+        "experiment1": "Test Log #1",
+        "experiment2": "Test Log #2",
+        "inventory": "Warden's Report"
+      },
       
       interop: {
         "": "Cross-Mod Interations",
