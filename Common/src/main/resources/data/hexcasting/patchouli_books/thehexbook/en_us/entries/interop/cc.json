@@ -1,0 +1,47 @@
+{
+  "name": "hexcasting.entry.interop.cc",
+  "icon": "hexcasting:focus",
+  "category": "hexcasting:interop",
+  "advancement": "hexcasting:root",
+  "flag": "mod:computercraft",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "hexcasting.page.interop.cc.1"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexcasting:focus_holder",
+      "text": "hexcasting.page.interop.cc.focus_holder.crafting.desc"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexcasting.page.interop.cc.isEmpty",
+      "title": "hexcasting.page.interop.cc.isEmpty.title"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexcasting.page.interop.cc.isWritable",
+      "title": "hexcasting.page.interop.cc.isWritable.title"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexcasting.page.interop.cc.clear",
+      "title": "hexcasting.page.interop.cc.clear.title"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexcasting.page.interop.cc.read",
+      "title": "hexcasting.page.interop.cc.read.title"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexcasting.page.interop.cc.writePattern",
+      "title": "hexcasting.page.interop.cc.writePattern.title"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "hexcasting.page.interop.cc.writePattern2"
+    }
+  ]
+}

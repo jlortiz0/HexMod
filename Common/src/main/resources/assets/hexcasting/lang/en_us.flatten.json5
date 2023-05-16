@@ -732,6 +732,10 @@
       lore: {
         "": "Lore",
         desc: "While exploring, I have found tattered papers detailing research into hexes. I will record any undamaged fragments here."
+      },
+      interop: {
+        "": "Cross-Mod Compatibility",
+        desc: "It appears I have installed some mod Hexcasting interoperates with! I've detailed them here."
       }
     },
     // ^ categories
@@ -813,20 +817,21 @@
       zeniths: "Zeniths",
       
       lore: {
-        "terabithia1": "Steles Letter #1",
-        "terabithia2": "Steles Letter #2",
-        "terabithia3": "Steles Letter #3.1",
-        "terabithia4": "Steles Letter #3.2",
-        "terabithia5": "Steles Letter #4",
-        "experiment1": "Test Log #1",
-        "experiment2": "Test Log #2",
-        "inventory": "Warden's Report"
+        "terabithia1": "Cardamom Steles, #1",
+        "terabithia2": "Cardamom Steles, #2",
+        "terabithia3": "Cardamom Steles, #3",
+        "terabithia4": "Cardamom Steles, #3 p2",
+        "terabithia5": "Cardamom Steles, #4",
+        "experiment1": "Wooleye Instance Notes",
+        "experiment2": "Wooleye Interview Logs",
+        "inventory": "Restoration Log #72"
       },
       
       interop: {
         "": "Cross-Mod Interations",
         gravity: "Gravity Changer",
         pehkui: "Pehkui",
+        cc: "ComputerCraft",
         // TODO: add something about Switchy once that PR gets merged
         // https://github.com/sisby-folk/switchy/pull/44
         // i can't WAIT for all the hilarious people on the github issues about this one
@@ -939,6 +944,10 @@
       "mishaps2.no_circle": "Tried to cast an action requiring a spell circle without a spell circle.$(br2)Causes light blue sparks, and upends my inventory onto the ground.",
       "mishaps2.no_record.title": "Lack Akashic Record",
       "mishaps2.no_record": "Tried to access an $(l:greatwork/akashiclib)$(item)Akashic Record/$ at a location where there isn't one.$(br2)Causes purple sparks, and steals away some of my experience.",
+      "mishaps2.big_battery.title": "Oversized Phial",
+      "mishaps2.big_battery": "Tried to create an exceedingly large $(l:items/phial)($item)Phial/$. The limit seems be be about 64000 dust.$(br2)Causes blue sparks. The phial will be flung out of my hand.",
+      "mishaps2.stack_overflow.title": "Stack Collapse",
+      "mishaps2.stack_overflow": "Attempted to push too many iotas to the stack. The limit seems to be about 1000 iotas.$(br2)Causes black sparks and kills the caster. Thankfully, I wasn't the one foolish enough to figure this out firsthand.",
       
       
       "_comment": "Items",
@@ -1483,7 +1492,21 @@
       
       "interop.pehkui.1": "I have discovered methods of changing the size of entities, and querying how much larger or smaller they are than normal.",
       "interop.pehkui.get": "Get the scale of the entity, as a proportion of their normal size. For most entities, this will be 1.",
-      "interop.pehkui.set": "Set the scale of the entity, passing in a proportion of their normal size. Costs about 1 $(item)Amethyst Shard/$."
+      "interop.pehkui.set": "Set the scale of the entity, passing in a proportion of their normal size. Costs about 1 $(item)Amethyst Shard/$.",
+
+      "interop.cc.1": "Computers can be used to write Pattern Iotas to $(l:items/focus)$(item)Foci/$.$(br2)To interface with the computer, a $(l:interop/cc)$(item)Focus Holder/$ is required. A computer can treat the $(item)Focus Holder/$ as a peripheral.",
+      "interop.cc.focus_holder.crafting.desc": " Right click while holding a $(l:items/focus)$(item)Focus/$ to insert it, and right click with an empty hand to remove it.",
+      "interop.cc.isEmpty.title": "isEmpty()",
+      "interop.cc.isEmpty": "Returns true if the $(l:items/focus)$(item)Focus/$ is empty. Will also return true if there is nothing in the $(item)Holder/$, so check $(l:interop/cc#isWritable)$(action)isWritable/$ as well.",
+      "interop.cc.isWritable.title": "isWritable()",
+      "interop.cc.isWritable": "Returns true if there is a non-sealed $(l:items/focus)$(item)Focus/$ in the $(l:interop/cc)$(item)Holder/$.",
+      "interop.cc.clear.title": "clear()",
+      "interop.cc.clear": "Erases the $(l:items/focus)$(item)Focus/$ in the $(l:interop/cc)$(item)Holder/$, deleting the stored Iota. Does nothing if the $(l:items/focus)$(item)Focus/$ is already empty or there is no $(l:items/focus)$(item)Focus/$ in the $(l:interop/cc)$(item)Holder/$.",
+      "interop.cc.read.title": "read()",
+      "interop.cc.read": "Reads the Iota stored in the $(l:items/focus)$(item)Focus/$.$(br2)Entity Iotas will be convered to a string with their name. Pattern Iotas will be converted to a string that allows for the pattern to be recreated with $(l:interop/cc#writePattern)$(action)writePattern/$.",
+      "interop.cc.writePattern.title": "writePattern(string)",
+      "interop.cc.writePattern": "Write a pattern indicated by a string. This function will fail if there is no $(l:items/focus)$(item)Focus/$, the $(l:items/focus)$(item)Focus/$ contains an Iota that is not a list of Patterns, or if the passed string results in a Pattern that draws over itself.",
+      "interop.cc.writePattern2": "The passed string must consist only of the characters \"qweasd\". Each character indicates a direction to move relative to the direction that the \"cursor\" is facing.$(br2)The cursor begins facing to the right. \"w\" will cause the cursor to move forward, \"q\" will move forward and left, \"e\" will move forward and right, \"s\" will move backwards, \"a\" will move backwards and left, and \"d\" will move forward and right. After moving, the cursor will turn to face the direction it just moved, away from where it came from.",
     }
   },
   

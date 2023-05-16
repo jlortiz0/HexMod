@@ -19,6 +19,7 @@ import at.petrak.hexcasting.datagen.recipe.builders.CompatIngredientValue;
 import at.petrak.hexcasting.datagen.recipe.builders.CreateCrushingRecipeBuilder;
 import at.petrak.hexcasting.datagen.recipe.builders.FarmersDelightCuttingRecipeBuilder;
 import at.petrak.paucal.api.datagen.PaucalRecipeProvider;
+import com.cursedcauldron.wildbackport.common.registry.entity.WBEntityTypes;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
@@ -433,11 +434,11 @@ public class HexplatRecipes extends PaucalRecipeProvider {
             .save(recipes, modLoc("brainsweep/akashic_record"));
 
         // Temporary tests
-//        new BrainsweepRecipeBuilder(StateIngredientHelper.of(Blocks.AMETHYST_BLOCK),
-//            new EntityTypeIngredient(EntityType.ALLAY),
-//            HexBlocks.QUENCHED_ALLAY.defaultBlockState(), MediaConstants.CRYSTAL_UNIT)
-//            .unlockedBy("enlightenment", enlightenment)
-//            .save(recipes, modLoc("brainsweep/quench_allay"));
+        new BrainsweepRecipeBuilder(StateIngredientHelper.of(Blocks.AMETHYST_BLOCK),
+            new EntityTypeIngredient(WBEntityTypes.ALLAY.get()),
+            HexBlocks.QUENCHED_ALLAY.defaultBlockState(), MediaConstants.CRYSTAL_UNIT)
+            .unlockedBy("enlightenment", enlightenment)
+            .save(recipes, modLoc("brainsweep/quench_allay"));
 
         // Create compat
         this.conditions.apply(new CreateCrushingRecipeBuilder()

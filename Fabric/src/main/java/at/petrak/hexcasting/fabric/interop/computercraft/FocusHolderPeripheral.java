@@ -59,14 +59,17 @@ public class FocusHolderPeripheral implements IPeripheral {
     @LuaFunction(mainThread = true)
     public final void writePattern(String s) throws LuaException {
         if (!isWritable()) {
-            throw new LuaException("No writable focus in drive");
+            throw new LuaException("No writable focus in holder");
+        }
+        if (s.length() < 1) {
+            throw new LuaException("Cannot write an empty pattern");
         }
         ListIota ls;
         Iota i = ((IotaHolderItem) be.getItem().getItem()).readIota(be.getItem(), (ServerLevel) be.getLevel());
         if (i == null) {
             ls = null;
         } else if (i.getType() != HexIotaTypes.LIST) {
-            throw new LuaException("Focus does not contain a list");
+            throw new LuaException("Focus does not contain a list of patterns");
         } else {
             ls = (ListIota) i;
         }
@@ -78,12 +81,14 @@ public class FocusHolderPeripheral implements IPeripheral {
             case 'e' -> HexDir.SOUTH_EAST;
             case 'a' -> HexDir.NORTH_WEST;
             case 'q' -> HexDir.NORTH_EAST;
-            default -> throw new LuaException("Invalid direction");
+            default -> throw new LuaException("Invalid starting direction");
         };
         try {
             pat = new PatternIota(HexPattern.fromAngles(s.substring(1), dir));
         } catch (IllegalStateException e) {
-            throw new LuaException(e.getMessage());
+            Throwable e2 = e;
+            if (e.getCause() != null) e2 = e.getCause();
+            throw new LuaException(e2.getMessage());
         }
         if (ls == null) {
             ls = new ListIota(Collections.singletonList(pat));
@@ -105,10 +110,7 @@ public class FocusHolderPeripheral implements IPeripheral {
         }
     }
 
-    private static Object convertIota(Iota i) {
-        if (i == null) {
-            return null;
-        }
+    private static Object convertIota(@NotNull Iota i) {
         IotaType<?> type = i.getType();
         if (type == HexIotaTypes.NULL || type == HexIotaTypes.GARBAGE) {
             return null;
@@ -126,13 +128,26 @@ public class FocusHolderPeripheral implements IPeripheral {
         if (type == HexIotaTypes.LIST) {
             ArrayList<Object> ls = new ArrayList<>();
             for (Iota i2 : i.subIotas()) {
+                if (i2 == null) {
+                    ls.add(null);
+                    continue;
+                }
                 Object arr = convertIota(i2);
                 ls.add(arr);
             }
             return new Object[] { ls.toArray() };
         }
         if (type == HexIotaTypes.PATTERN) {
-            return ((PatternIota) i).getPattern().anglesSignature();
+            HexPattern p = ((PatternIota) i).getPattern();
+            String s = String.valueOf(switch (p.component1()) {
+                case NORTH_EAST -> 'q';
+                case EAST -> 'w';
+                case SOUTH_EAST -> 'e';
+                case SOUTH_WEST -> 'd';
+                case WEST -> 's';
+                case NORTH_WEST -> 'a';
+            });
+            return s + p.anglesSignature();
         }
         if (type == HexIotaTypes.ENTITY) {
             return ((EntityIota) i).getEntity().getName().getString();
@@ -144,6 +159,9 @@ public class FocusHolderPeripheral implements IPeripheral {
     public final Object[] read() {
         if (be.getItem().getItem() instanceof IotaHolderItem focus) {
             Iota held = focus.readIota(be.getItem(), (ServerLevel) be.getLevel());
+            if (held == null) {
+                return null;
+            }
             return new Object[] { convertIota(held) };
         }
         return null;

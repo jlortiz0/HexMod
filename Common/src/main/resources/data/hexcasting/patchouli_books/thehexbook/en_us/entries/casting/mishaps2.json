@@ -24,6 +24,16 @@
       "type": "patchouli:text",
       "title": "hexcasting.page.mishaps2.no_record.title",
       "text": "hexcasting.page.mishaps2.no_record"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "hexcasting.page.mishaps2.big_battery.title",
+      "text": "hexcasting.page.mishaps2.big_battery"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "hexcasting.page.mishaps2.stack_overflow.title",
+      "text": "hexcasting.page.mishaps2.stack_overflow"
     }
   ]
 }

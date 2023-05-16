@@ -58,7 +58,8 @@ public class HexInterop {
                 platformSpecificIntegrations = List.of();
             } else if (platform == Platform.FABRIC) {
                 platformSpecificIntegrations = List.of(
-                    Fabric.GRAVITY_CHANGER_API_ID
+                    Fabric.GRAVITY_CHANGER_API_ID,
+                    Fabric.CC_ID
                 );
             } else {
                 throw new UnsupportedOperationException();
