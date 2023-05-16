@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RAR",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:deepslate"
+    },
+    "A": {
+      "item": "hexcasting:amethyst_dust"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "hexcasting:focus_holder"
+  }
+}

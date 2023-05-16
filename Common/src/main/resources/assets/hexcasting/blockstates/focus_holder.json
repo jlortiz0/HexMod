@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "occupied=true": { "model":  "hexcasting:block/focus_holder_full" },
+    "occupied=false": { "model":  "hexcasting:block/focus_holder_empty" }
+  }
+}

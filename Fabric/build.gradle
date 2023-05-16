@@ -116,6 +116,7 @@ dependencies {
 //    modImplementation "maven.modrinth:sodium:${sodiumVersion}"
     modImplementation "maven.modrinth:lithium:${lithiumVersion}"
     modImplementation "maven.modrinth:phosphor:${phosphorVersion}"
+    modImplementation("maven.modrinth:cc-restitched:1.100.8+1.18.2")
 }
 
 tasks.withType(JavaCompile) {

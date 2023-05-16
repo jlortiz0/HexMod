@@ -21,6 +21,7 @@ import at.petrak.hexcasting.api.player.Sentinel;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.msgs.IMessage;
 import at.petrak.hexcasting.fabric.cc.HexCardinalComponents;
+import at.petrak.hexcasting.fabric.interop.computercraft.ComputerCraftInterop;
 import at.petrak.hexcasting.fabric.interop.gravity.GravityApiInterop;
 import at.petrak.hexcasting.fabric.interop.trinkets.TrinketsApiInterop;
 import at.petrak.hexcasting.fabric.recipe.FabricUnsealedIngredient;
@@ -108,6 +109,9 @@ public class FabricXplatImpl implements IXplatAbstractions {
         }
         if (this.isModPresent(HexInterop.Fabric.TRINKETS_API_ID)) {
             TrinketsApiInterop.init();
+        }
+        if (this.isModPresent(HexInterop.Fabric.CC_ID)) {
+            ComputerCraftInterop.init();
         }
     }
 
