@@ -59,6 +59,13 @@ repositories {
     }
     // pehkui
     maven { url = "https://jitpack.io" }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven { url = 'https://maven.minecraftforge.net/' }
 }
 
 dependencies {
@@ -116,7 +123,10 @@ dependencies {
 //    modImplementation "maven.modrinth:sodium:${sodiumVersion}"
     modImplementation "maven.modrinth:lithium:${lithiumVersion}"
     modImplementation "maven.modrinth:phosphor:${phosphorVersion}"
-    modImplementation("maven.modrinth:cc-restitched:1.100.8+1.18.2")
+    modCompileOnly("maven.modrinth:cc-restitched:1.100.8+1.18.2")
+    modCompileOnly "curse.maven:wildbackport-537901:3988035"
+    modRuntimeOnly "curse.maven:wildbackport-537901:3988036"
+    modRuntimeOnly 'com.github.glitchfiend:TerraBlender-fabric:1.18.2-1.2.0.126'
 }
 
 tasks.withType(JavaCompile) {

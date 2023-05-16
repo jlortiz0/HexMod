@@ -53,6 +53,12 @@ repositories {
     maven { url = "https://maven.theillusivec4.top" }
     // pehkui
     maven { url = "https://jitpack.io" }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
@@ -82,6 +88,7 @@ dependencies {
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:$minecraftVersion-$curiosVersion")
 
     api fg.deobf("com.github.Virtuoel:Pehkui:${pehkuiVersion}-${minecraftVersion}-forge")
+    implementation "curse.maven:wildbackport-537901:3988035"
 }
 
 minecraft {
