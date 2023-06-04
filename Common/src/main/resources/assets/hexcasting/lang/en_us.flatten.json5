@@ -531,6 +531,10 @@
         "gravity/set": "Alter Gravity",
         "pehkui/get": "Gulliver's Purification",
         "pehkui/set": "Alter Scale",
+        "gender/get_bust": "Mastoid Purification",
+        "gender/set_bust": "Alter Breasts",
+        "gender/get_buns": "Gluteal Purification",
+        "gender/set_buns": "Alter Butt"
       },
       
       // hexcasting.action.book.[resloc] override the name of that pattern in the patchi book, for abbreviations
@@ -832,6 +836,7 @@
         gravity: "Gravity Changer",
         pehkui: "Pehkui",
         cc: "ComputerCraft",
+        gender: "Wildfire Gender"
         // TODO: add something about Switchy once that PR gets merged
         // https://github.com/sisby-folk/switchy/pull/44
         // i can't WAIT for all the hilarious people on the github issues about this one
@@ -1507,6 +1512,12 @@
       "interop.cc.writePattern.title": "writePattern(string)",
       "interop.cc.writePattern": "Write a pattern indicated by a string. This function will fail if there is no $(l:items/focus)$(item)Focus/$, the $(l:items/focus)$(item)Focus/$ contains an Iota that is not a list of Patterns, or if the passed string results in a Pattern that draws over itself.",
       "interop.cc.writePattern2": "The passed string must consist only of the characters \"qweasd\". Each character indicates a direction to move relative to the direction that the \"cursor\" is facing.$(br2)The cursor begins facing to the right. \"w\" will cause the cursor to move forward, \"q\" will move forward and left, \"e\" will move forward and right, \"s\" will move backwards, \"a\" will move backwards and left, and \"d\" will move forward and right. After moving, the cursor will turn to face the direction it just moved, away from where it came from.",
+
+      "interop.gender.1": "I have discovered methods of changing the fat distribution of entities, and querying how that distribution appears on them.",
+      "interop.gender.get_bust": "Get the breast size of the player, as a number from 0 to 2.5.",
+      "interop.gender.set_bust": "Set the breast size of the player, from 0 to 2.5. Costs about 1 $(item)Amethyst Shard/$.",
+      "interop.gender.get_buns": "Get the butt size of the player, as a number from 0 to 2.5.",
+      "interop.gender.set_buns": "Set the butt size of the player, from 0 to 2.5. Costs about 1 $(item)Amethyst Shard/$."
     }
   },
   

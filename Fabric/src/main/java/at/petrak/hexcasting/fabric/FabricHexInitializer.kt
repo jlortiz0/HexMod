@@ -26,6 +26,7 @@ import at.petrak.hexcasting.common.misc.PlayerPositionRecorder
 import at.petrak.hexcasting.common.misc.RegisterMisc
 import at.petrak.hexcasting.common.recipe.HexRecipeStuffRegistry
 import at.petrak.hexcasting.fabric.event.VillagerConversionCallback
+import at.petrak.hexcasting.fabric.interop.gender.*
 import at.petrak.hexcasting.fabric.interop.gravity.GravityApiInterop
 import at.petrak.hexcasting.fabric.interop.gravity.OpChangeGravity
 import at.petrak.hexcasting.fabric.interop.gravity.OpGetGravity
@@ -35,6 +36,7 @@ import at.petrak.hexcasting.fabric.recipe.FabricModConditionalIngredient
 import at.petrak.hexcasting.fabric.storage.FabricImpetusStorage
 import at.petrak.hexcasting.interop.HexInterop
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import com.ibm.icu.util.GenderInfo.Gender
 import io.github.tropheusj.serialization_hooks.ingredient.IngredientDeserializer
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback
@@ -160,6 +162,12 @@ object FabricHexInitializer : ModInitializer {
                 ActionRegistryEntry(HexPattern.fromAngles("wawawddew", HexDir.NORTH_EAST), OpGetGravity))
             HexActions.make("interop/gravity/set",
                 ActionRegistryEntry(HexPattern.fromAngles("wdwdwaaqw", HexDir.NORTH_WEST), OpChangeGravity))
+        }
+        if (GenderInterop.isActive()) {
+            HexActions.make("interop/gender/get_bust", ActionRegistryEntry(HexPattern.fromAngles("deaedew", HexDir.SOUTH_EAST), OpGetBreasts))
+            HexActions.make("interop/gender/set_bust", ActionRegistryEntry(HexPattern.fromAngles("deaedewaqq", HexDir.SOUTH_EAST), OpChangeBreasts))
+            HexActions.make("interop/gender/get_buns", ActionRegistryEntry(HexPattern.fromAngles("wedeaed", HexDir.WEST), OpGetBuns))
+            HexActions.make("interop/gender/set_buns", ActionRegistryEntry(HexPattern.fromAngles("wedeaedwee", HexDir.WEST), OpChangeBuns))
         }
     }
 
