@@ -582,6 +582,7 @@
       "hexcasting:open_paren": "Introspection",
       "hexcasting:close_paren": "Retrospection",
       "hexcasting:escape": "Consideration",
+      "hexcasting:undo": "Reconsideration"
     },
     "iota": {
       "hexcasting:null": "Null",
@@ -1267,6 +1268,7 @@
       "patterns_as_iotas.parens.1": "Drawing $(l:patterns/patterns_as_iotas#hexcasting:open_paren)$(action)Introspection/$ makes my drawing of patterns act differently, for a time. Until I draw $(l:patterns/patterns_as_iotas#hexcasting:open_paren)$(action)Retrospection/$, the patterns I draw are saved. Then, when I draw $(l:patterns/patterns_as_iotas#hexcasting:close_paren)$(action)Retrospection/$, they are added to the stack as a list iota.",
       "patterns_as_iotas.parens.2": "If I draw another $(l:patterns/patterns_as_iotas#hexcasting:close_paren)$(action)Introspection/$, it'll still be saved to the list, but I'll then have to draw $(italic)two/$ $(l:patterns/patterns_as_iotas#hexcasting:close_paren)$(action)Retrospections/$ to get back to normal casting.",
       "patterns_as_iotas.parens.3": "Also, I can escape the special behavior of $(l:patterns/patterns_as_iotas#hexcasting:open_paren)$(action)Intro-/$ and $(l:patterns/patterns_as_iotas#hexcasting:close_paren)$(action)Retrospection/$ by drawing a $(l:patterns/patterns_as_iotas#hexcasting:escape)$(action)Consideration/$ before them, which will simply add them to the list without affecting which the number of $(l:patterns/patterns_as_iotas#hexcasting:close_paren)$(action)Retrospections/$ I need to return to casting.$(br2)If I draw two $(l:patterns/patterns_as_iotas#hexcasting:escape)$(action)Considerations/$ in a row while $(l:patterns/patterns_as_iotas#hexcasting:open_paren)$(action)introspecting/$, it will add a single $(l:patterns/patterns_as_iotas#hexcasting:escape)$(action)Consideration/$ to the list.",
+      "patterns_as_iotas.undo.1": "If I make a mistake during $(l:patterns/patterns_as_iotas#hexcasting:open_paren)$(action)Introspection/$, I can draw $(l:patterns/patterns_as_iotas#hexcasting:undo)$(action)Reconsideration/$ to delete the most recent pattern from the list.",
       
       
       "readwrite.1": "This section deals with the storage of $(thing)Iotas/$ in a more permanent medium. Nearly any iota can be stored to a suitable item, such as a $(l:items/focus)$(item)Focus/$ or $(l:items/spellbook)$(item)Spellbook/$), and read back later. Certain items, such as an $(l:items/abacus)$(item)Abacus/$, can only be read from.$(br2)Iotas are usually read and written from the other hand, but it is also possible to read and write with an item when it is sitting on the ground as an item entity, or when in an item frame.",
