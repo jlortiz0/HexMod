@@ -124,9 +124,9 @@ dependencies {
     modImplementation "maven.modrinth:lithium:${lithiumVersion}"
     modImplementation "maven.modrinth:phosphor:${phosphorVersion}"
     modCompileOnly("maven.modrinth:cc-restitched:1.100.8+1.18.2")
-    modImplementation "curse.maven:wildbackport-537901:3988036"
+    modCompileOnly "curse.maven:wildbackport-537901:3988035"
+    modRuntimeOnly "curse.maven:wildbackport-537901:3988036"
     modRuntimeOnly 'com.github.glitchfiend:TerraBlender-fabric:1.18.2-1.2.0.126'
-    modCompileOnly files("lib/Gender.jar")
 }
 
 tasks.withType(JavaCompile) {
