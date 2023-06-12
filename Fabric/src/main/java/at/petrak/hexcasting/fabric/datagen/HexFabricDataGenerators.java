@@ -1,26 +1,38 @@
 package at.petrak.hexcasting.fabric.datagen;
 
 import at.petrak.hexcasting.api.HexAPI;
+import at.petrak.hexcasting.api.misc.MediaConstants;
+import at.petrak.hexcasting.common.recipe.ingredient.StateIngredientHelper;
+import at.petrak.hexcasting.common.recipe.ingredient.brainsweep.EntityTypeIngredient;
+import at.petrak.hexcasting.common.lib.HexBlocks;
 import at.petrak.hexcasting.datagen.HexLootTables;
 import at.petrak.hexcasting.datagen.IXplatIngredients;
+import at.petrak.hexcasting.datagen.HexAdvancements;
 import at.petrak.hexcasting.datagen.recipe.HexplatRecipes;
 import at.petrak.hexcasting.datagen.recipe.builders.FarmersDelightToolIngredient;
+import at.petrak.hexcasting.datagen.recipe.builders.BrainsweepRecipeBuilder;
 import at.petrak.hexcasting.datagen.tag.HexActionTagProvider;
 import at.petrak.hexcasting.datagen.tag.HexBlockTagProvider;
 import at.petrak.hexcasting.datagen.tag.HexItemTagProvider;
 import at.petrak.hexcasting.fabric.recipe.FabricModConditionalIngredient;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
+import at.petrak.paucal.api.datagen.PaucalRecipeProvider;
+import com.cursedcauldron.wildbackport.common.registry.entity.WBEntityTypes;
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.Registry;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.EnumMap;
 import java.util.stream.Stream;
+import java.util.function.Consumer;
 
 public class HexFabricDataGenerators implements DataGeneratorEntrypoint {
     @Override
@@ -37,6 +49,8 @@ public class HexFabricDataGenerators implements DataGeneratorEntrypoint {
         gen.addProvider(new HexActionTagProvider(gen));
 
         gen.addProvider(new HexLootTables(gen));
+
+        gen.addProvider(new AllayRecipeProvider(gen));
     }
 
     private static final IXplatIngredients INGREDIENTS = new IXplatIngredients() {
@@ -148,5 +162,20 @@ public class HexFabricDataGenerators implements DataGeneratorEntrypoint {
 
     private static TagKey<Item> tag(String namespace, String s) {
         return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(namespace, s));
+    }
+
+    private static class AllayRecipeProvider extends PaucalRecipeProvider {
+        public AllayRecipeProvider(DataGenerator generator) {
+            super(generator, HexAPI.MOD_ID);
+        }
+
+        @Override
+        protected void makeRecipes(Consumer<FinishedRecipe> recipes) {
+            new BrainsweepRecipeBuilder(StateIngredientHelper.of(Blocks.AMETHYST_BLOCK),
+                new EntityTypeIngredient(WBEntityTypes.ALLAY.get()),
+                HexBlocks.QUENCHED_ALLAY.defaultBlockState(), MediaConstants.CRYSTAL_UNIT)
+                .unlockedBy("enlightenment", HexAdvancements.ENLIGHTEN)
+                .save(recipes, modLoc("brainsweep/quench_allay"));
+        }
     }
 }

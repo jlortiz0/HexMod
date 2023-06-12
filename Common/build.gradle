@@ -44,7 +44,6 @@ dependencies {
     compileOnly 'com.github.TheElectronWill:Night-Config:v3.6.6'
     compileOnly "at.petra-k.paucal:paucal-common-$minecraftVersion:$paucalVersion"
     compileOnly "vazkii.patchouli:Patchouli-xplat:$minecraftVersion-$patchouliVersion"
-    compileOnly "curse.maven:wildbackport-537901:3988035"
 
     compileOnly "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
     testCompileOnly "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
