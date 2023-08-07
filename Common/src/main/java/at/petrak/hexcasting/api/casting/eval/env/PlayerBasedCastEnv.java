@@ -158,7 +158,7 @@ public abstract class PlayerBasedCastEnv extends CastingEnvironment {
         List<ADMediaHolder> sources = MediaHelper.scanPlayerForMediaStuff(this.caster);
 
         for (var source : sources) {
-            var found = MediaHelper.extractMedia(source, (int) costLeft, true, false);
+            var found = MediaHelper.extractMedia(source, costLeft, false, false);
             costLeft -= found;
             if (costLeft <= 0) {
                 break;
